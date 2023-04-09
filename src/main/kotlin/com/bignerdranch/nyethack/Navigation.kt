@@ -1,0 +1,29 @@
+package com.bignerdranch.nyethack
+
+enum class Direction (private val coordinate: Coordinate) {
+    NORTH(Coordinate(0,-1)),
+    EAST(Coordinate(1,0)),
+    SOUTH(Coordinate(0,1)),
+    WEST(Coordinate(-1,0));
+
+    fun updateCoordinate(playerCoordinate: Coordinate) =
+    coordinate + playerCoordinate
+}
+data class Coordinate(val x:Int, val y:Int) {
+    val isInBounds = x >= 0 && y >= 0
+    operator fun plus(other:Coordinate)= Coordinate(x+other.x, y + other.y)
+}
+enum class Navigation(val plaseDrawing:String){
+    TAVERN("O X O\n" +
+                      "O O"),
+    TOWNSQUAER("X O O\n" +
+                           "O O"),
+    BLACKROOM("O O X\n" +
+                          "O O"),
+    LONGCORRIDOR("O O O\n" +
+                            "X O"),
+    GEMERICROOM("O O O\n" +
+                           "O X")
+
+
+}
